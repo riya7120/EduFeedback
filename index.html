@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faculty Feedback and Course Evaluation Portal">
+  <title>CampusVoice | Faculty Feedback Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loginView" class="login-screen">
+    <div class="login-art">
+      <div class="brand brand-light"><span class="brand-mark">CV</span><span>CampusVoice</span></div>
+      <div class="login-message">
+        <span class="eyebrow">STUDENT EXPERIENCE • CONTINUOUS IMPROVEMENT</span>
+        <h1>Your voice<br>makes a difference.</h1>
+        <p>A transparent space to share feedback, evaluate courses and help build a better learning experience.</p>
+        <div class="login-points">
+          <div><span>✓</span> Share honest and constructive feedback</div>
+          <div><span>✓</span> Track teaching and course quality</div>
+          <div><span>✓</span> Turn student insights into improvement</div>
+        </div>
+      </div>
+      <div class="login-footer">A smarter campus starts with listening.</div>
+    </div>
+    <div class="login-panel">
+      <div class="mobile-brand brand"><span class="brand-mark">CV</span><span>CampusVoice</span></div>
+      <div class="login-box">
+        <span class="eyebrow">WELCOME BACK</span>
+        <h2>Sign in to your portal</h2>
+        <p class="muted">Enter your details to continue.</p>
+        <form id="loginForm">
+          <label for="loginName">Full name</label>
+          <input id="loginName" type="text" placeholder="e.g. Alex Johnson" required>
+          <label for="loginRole">Login as</label>
+          <select id="loginRole"><option value="student">Student</option><option value="admin">Administrator</option></select>
+          <label for="loginPassword">Password</label>
+          <div class="password-wrap"><input id="loginPassword" type="password" placeholder="Enter any password" required minlength="3"><button type="button" class="show-pass" id="togglePassword">Show</button></div>
+          <button class="btn btn-primary btn-full" type="submit">Sign in <span>→</span></button>
+          <p class="form-error" id="loginError"></p>
+        </form>
+        <div class="demo-box"><strong>Demo access</strong><br>Use any name and password (minimum 3 characters). Select Administrator to view admin tools.</div>
+        <p class="login-legal">By signing in, you agree to use the portal respectfully and responsibly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="appView" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">CV</span><span>CampusVoice</span></div>
+      <div class="side-label">WORKSPACE</div>
+      <nav id="mainNav">
+        <button class="nav-link active" data-page="dashboard"><span>▦</span> Overview</button>
+        <button class="nav-link" data-page="feedback"><span>✎</span> Submit feedback</button>
+        <button class="nav-link" data-page="myfeedback"><span>▤</span> My feedback</button>
+        <button class="nav-link" data-page="faculty"><span>♙</span> Faculty directory</button>
+        <button class="nav-link" data-page="courses"><span>▣</span> Course evaluation</button>
+        <div class="side-label nav-admin-label">INSIGHTS</div>
+        <button class="nav-link" data-page="analytics"><span>▥</span> Analytics</button>
+        <button class="nav-link" data-page="reports"><span>⇩</span> Reports</button>
+        <button class="nav-link admin-only" data-page="admin"><span>⚙</span> Admin panel</button>
+        <div class="side-label">INFORMATION</div>
+        <button class="nav-link" data-page="about"><span>ⓘ</span> About portal</button>
+        <button class="nav-link" data-page="help"><span>?</span> Help & support</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><div class="note-icon">✦</div><strong>Your feedback matters</strong><p>Every response is an opportunity to improve learning.</p></div>
+        <button class="profile-mini" id="sidebarProfile"><span class="avatar" id="userInitial">S</span><span><strong id="sideUserName">Student</strong><small id="sideUserRole">Student account</small></span><span class="dots">•••</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle">☰</button>
+        <div class="breadcrumb">CampusVoice <span>/</span> <strong id="breadcrumbPage">Overview</strong></div>
+        <div class="top-actions"><span class="semester-tag">ACADEMIC YEAR 2026–27</span><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">☾ Dark mode</button><button class="icon-btn" id="notificationBtn" title="Notifications">♧</button><div class="top-user"><span class="avatar small" id="topInitial">S</span><span id="topUserName">Student</span></div></div>
+      </header>
+      <div class="page-wrap">
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-row"><div><span class="eyebrow">YOUR LEARNING, YOUR VOICE</span><h1 id="welcomeTitle">Good morning!</h1><p class="muted">Here is an overview of your feedback activity and learning experience.</p></div><button class="btn btn-primary" data-go="feedback">＋ Give feedback</button></div>
+          <div class="hero-banner"><div><span class="hero-chip">STUDENT VOICE INITIATIVE</span><h2>Better feedback.<br><em>Better education.</em></h2><p>Help your institution understand what works and where it can do better.</p><button class="btn btn-white" data-go="feedback">Share your experience <span>→</span></button></div><div class="hero-graphic"><div class="hero-circle circle-one"></div><div class="hero-circle circle-two"></div><div class="hero-card"><span>Overall experience</span><strong>4.6<small>/5</small></strong><div class="hero-stars">★★★★★</div><small>Illustrative portal score</small></div></div></div>
+          <div class="section-heading"><div><h3>Portal at a glance</h3><p class="muted">Live statistics based on feedback saved in this browser.</p></div><span class="live-label"><i></i> LIVE DATA</span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>Total submissions</span><span class="stat-icon purple">▤</span></div><strong id="statSubmissions">0</strong><small>Feedback entries received</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Average rating</span><span class="stat-icon orange">★</span></div><strong id="statRating">—</strong><small>Across all submitted ratings</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Faculty evaluated</span><span class="stat-icon blue">♙</span></div><strong id="statFaculty">0</strong><small>Unique faculty members</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Courses covered</span><span class="stat-icon green">▣</span></div><strong id="statCourses">0</strong><small>Courses with feedback</small></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel"><div class="panel-head"><div><h3>Recent feedback</h3><p class="muted">Your latest submissions</p></div><button class="text-btn" data-go="myfeedback">View all →</button></div><div id="recentFeedback" class="recent-list"><div class="empty-state">No feedback submitted yet. Start by sharing your experience.</div></div></article>
+            <article class="panel"><div class="panel-head"><div><h3>Quick actions</h3><p class="muted">Explore the portal</p></div></div><div class="quick-actions"><button data-go="feedback"><span class="quick-icon purple">✎</span><span><strong>Submit feedback</strong><small>Rate a faculty member</small></span><b>→</b></button><button data-go="faculty"><span class="quick-icon blue">♙</span><span><strong>Explore faculty</strong><small>View faculty directory</small></span><b>→</b></button><button data-go="analytics"><span class="quick-icon green">▥</span><span><strong>View analytics</strong><small>Explore rating insights</small></span><b>→</b></button></div></article>
+          </div>
+          <div class="notice"><span>ⓘ</span><div><strong>Feedback privacy</strong><p>Your feedback is stored locally in this browser demonstration. Anonymous submissions hide your name in the feedback record, but this prototype is not a secure institutional system.</p></div></div>
+        </section>
+
+        <section class="page" id="page-feedback">
+          <div class="page-title"><div><span class="eyebrow">STUDENT RESPONSE FORM</span><h1>Submit feedback</h1><p class="muted">Your constructive feedback helps improve teaching quality and course delivery.</p></div><span class="step-pill">● &nbsp; Step 1 of 1</span></div>
+          <div class="form-layout"><form id="feedbackForm" class="panel feedback-form">
+            <div class="form-section"><div class="form-section-title"><span>01</span><div><h3>Academic details</h3><p class="muted">Tell us which class experience you are evaluating.</p></div></div>
+              <div class="field-grid"><div class="field"><label for="courseSelect">Course / Subject <b>*</b></label><select id="courseSelect" required><option value="">Select a course</option></select></div><div class="field"><label for="facultySelect">Faculty member <b>*</b></label><select id="facultySelect" required><option value="">Select faculty</option></select></div><div class="field"><label for="semesterSelect">Semester</label><select id="semesterSelect"><option>Semester 1</option><option>Semester 2</option><option>Semester 3</option><option>Semester 4</option><option>Semester 5</option><option>Semester 6</option><option>Semester 7</option><option>Semester 8</option></select></div><div class="field"><label for="sectionInput">Section / Class</label><input id="sectionInput" placeholder="e.g. K23AB"></div></div>
+            </div>
+            <div class="form-section"><div class="form-section-title"><span>02</span><div><h3>Teaching evaluation</h3><p class="muted">Rate each aspect from 1 (Needs improvement) to 5 (Excellent).</p></div></div>
+              <div id="ratingFields" class="rating-fields"></div>
+              <div class="rating-legend"><span>1 — Needs improvement</span><span>5 — Excellent</span></div>
+            </div>
+            <div class="form-section"><div class="form-section-title"><span>03</span><div><h3>Written feedback</h3><p class="muted">Share specific observations and suggestions.</p></div></div>
+              <div class="field"><label for="strengthsInput">What did you appreciate? (Optional)</label><textarea id="strengthsInput" rows="3" placeholder="Mention teaching practices or course elements that worked well..."></textarea></div>
+              <div class="field"><label for="suggestionsInput">Suggestions for improvement (Optional)</label><textarea id="suggestionsInput" rows="3" placeholder="Share practical ideas that could improve the learning experience..."></textarea></div>
+              <label class="check-row"><input type="checkbox" id="anonymousCheck"><span><strong>Submit anonymously</strong><small>Your name will not appear in the saved feedback record.</small></span></label>
+              <label class="check-row"><input type="checkbox" id="honestCheck" required><span><strong>I confirm this feedback is honest and respectful. *</strong><small>Please provide constructive and relevant comments.</small></span></label>
+            </div>
+            <div class="form-actions"><button type="reset" class="btn btn-outline">Clear form</button><button type="submit" class="btn btn-primary">Submit evaluation <span>→</span></button></div><p id="feedbackMessage" class="form-message" aria-live="polite"></p>
+          </form>
+          <aside class="form-aside"><div class="panel tips-panel"><div class="tips-icon">✦</div><h3>Make your feedback count</h3><p class="muted">A few thoughtful comments can make a meaningful difference.</p><ul><li>Be specific and objective.</li><li>Focus on learning experiences.</li><li>Recognise strengths as well as gaps.</li><li>Suggest realistic improvements.</li></ul></div><div class="panel scale-panel"><h3>Rating scale</h3><div><b class="scale-number s5">5</b><span><strong>Excellent</strong><small>Consistently outstanding</small></span></div><div><b class="scale-number s4">4</b><span><strong>Very good</strong><small>Above expectations</small></span></div><div><b class="scale-number s3">3</b><span><strong>Good</strong><small>Meets expectations</small></span></div><div><b class="scale-number s2">2</b><span><strong>Fair</strong><small>Needs some improvement</small></span></div><div><b class="scale-number s1">1</b><span><strong>Needs improvement</strong><small>Significant improvement needed</small></span></div></div></aside></div>
+        </section>
+
+        <section class="page" id="page-myfeedback">
+          <div class="page-title"><div><span class="eyebrow">YOUR ACTIVITY</span><h1>My feedback</h1><p class="muted">Review the evaluations you have submitted from this browser.</p></div><button class="btn btn-primary" data-go="feedback">＋ New feedback</button></div>
+          <div class="filter-row"><input id="myFeedbackSearch" placeholder="Search faculty or course..."><select id="myFeedbackFilter"><option value="all">All submissions</option><option value="mine">Named submissions</option><option value="anonymous">Anonymous submissions</option></select></div>
+          <div class="panel table-panel"><div class="table-scroll"><table><thead><tr><th>Faculty / Course</th><th>Date submitted</th><th>Average rating</th><th>Visibility</th><th>Action</th></tr></thead><tbody id="myFeedbackRows"></tbody></table></div><div id="myFeedbackEmpty" class="empty-state">You have not submitted any feedback yet.</div></div>
+        </section>
+
+        <section class="page" id="page-faculty">
+          <div class="page-title"><div><span class="eyebrow">OUR TEACHING COMMUNITY</span><h1>Faculty directory</h1><p class="muted">Explore faculty members and their feedback summaries.</p></div></div>
+          <div class="filter-row"><input id="facultySearch" placeholder="Search faculty member..."><span class="muted" id="facultyCount"></span></div>
+          <div class="faculty-grid" id="facultyGrid"></div>
+        </section>
+
+        <section class="page" id="page-courses">
+          <div class="page-title"><div><span class="eyebrow">ACADEMIC QUALITY</span><h1>Course evaluation</h1><p class="muted">Review feedback trends across the courses offered in this portal.</p></div></div>
+          <div class="course-grid" id="courseGrid"></div>
+          <div class="panel course-insight"><div class="panel-head"><div><h3>Course evaluation overview</h3><p class="muted">Average rating for each course</p></div></div><div class="chart-wrap"><canvas id="courseChart" height="260"></canvas></div></div>
+        </section>
+
+        <section class="page" id="page-analytics">
+          <div class="page-title"><div><span class="eyebrow">DATA & INSIGHTS</span><h1>Analytics dashboard</h1><p class="muted">Understand feedback patterns through visual summaries.</p></div><button class="btn btn-outline" id="refreshAnalytics">↻ Refresh</button></div>
+          <div class="stats-grid compact-stats"><article class="stat-card"><div class="stat-top"><span>Responses</span><span class="stat-icon purple">▤</span></div><strong id="analyticsResponses">0</strong><small>Total feedback records</small></article><article class="stat-card"><div class="stat-top"><span>Overall score</span><span class="stat-icon orange">★</span></div><strong id="analyticsScore">—</strong><small>Out of 5.00</small></article><article class="stat-card"><div class="stat-top"><span>Top criterion</span><span class="stat-icon green">✦</span></div><strong class="stat-text" id="topCriterion">—</strong><small>Highest average score</small></article></div>
+          <div class="analytics-grid"><article class="panel"><div class="panel-head"><div><h3>Rating distribution</h3><p class="muted">How students rated their experience</p></div></div><div class="chart-wrap"><canvas id="distributionChart" height="250"></canvas></div></article><article class="panel"><div class="panel-head"><div><h3>Criterion performance</h3><p class="muted">Average score by teaching dimension</p></div></div><div class="chart-wrap"><canvas id="criteriaChart" height="250"></canvas></div></article><article class="panel wide-panel"><div class="panel-head"><div><h3>Faculty comparison</h3><p class="muted">Average rating for each faculty member</p></div></div><div class="chart-wrap"><canvas id="facultyChart" height="270"></canvas></div></article></div>
+          <div class="notice"><span>ⓘ</span><div><strong>How to read these charts</strong><p>All charts are generated from submissions saved in this browser. If no feedback has been submitted, the charts will show zero or no-data states. This demonstration does not contain real institutional feedback.</p></div></div>
+        </section>
+
+        <section class="page" id="page-reports">
+          <div class="page-title"><div><span class="eyebrow">EXPORT & DOCUMENTATION</span><h1>Reports</h1><p class="muted">Download feedback data for further review and documentation.</p></div></div>
+          <div class="report-grid"><article class="panel report-card"><span class="report-icon purple">⇩</span><h3>Feedback data CSV</h3><p class="muted">Export all feedback records, ratings, comments and submission dates into a spreadsheet-friendly file.</p><button class="btn btn-primary" id="downloadCsv">Download CSV</button></article><article class="panel report-card"><span class="report-icon blue">▥</span><h3>Analytics snapshot</h3><p class="muted">Download a concise text summary of overall ratings and faculty performance.</p><button class="btn btn-outline" id="downloadSummary">Download summary</button></article><article class="panel report-card"><span class="report-icon green">▣</span><h3>Print report</h3><p class="muted">Open a print-friendly view of the current portal page and save it as PDF.</p><button class="btn btn-outline" id="printReport">Print / Save PDF</button></article></div>
+          <div class="panel report-note"><h3>Reporting note</h3><p class="muted">Use exported information responsibly. Remove identifying information before sharing reports outside the authorised academic team. The current version stores data only in the browser used to submit it.</p></div>
+        </section>
+
+        <section class="page" id="page-admin">
+          <div class="page-title"><div><span class="eyebrow">PORTAL MANAGEMENT</span><h1>Administrator panel</h1><p class="muted">Review portal activity and manage the demonstration directory.</p></div><span class="admin-badge">ADMIN VIEW</span></div>
+          <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span>All responses</span><span class="stat-icon purple">▤</span></div><strong id="adminResponses">0</strong><small>Saved in this browser</small></article><article class="stat-card"><div class="stat-top"><span>Faculty members</span><span class="stat-icon blue">♙</span></div><strong id="adminFaculty">0</strong><small>In directory</small></article><article class="stat-card"><div class="stat-top"><span>Courses</span><span class="stat-icon green">▣</span></div><strong id="adminCourses">0</strong><small>In course list</small></article><article class="stat-card"><div class="stat-top"><span>Anonymous</span><span class="stat-icon orange">◉</span></div><strong id="adminAnonymous">0</strong><small>Anonymous submissions</small></article></div>
+          <div class="admin-grid"><article class="panel"><div class="panel-head"><div><h3>Manage faculty</h3><p class="muted">Add a faculty member to the local directory.</p></div></div><form id="addFacultyForm" class="inline-form"><input id="newFacultyName" placeholder="Faculty full name" required><button class="btn btn-primary" type="submit">Add faculty</button></form><div id="adminFacultyList" class="manage-list"></div></article><article class="panel"><div class="panel-head"><div><h3>Manage courses</h3><p class="muted">Add a course to the local course list.</p></div></div><form id="addCourseForm" class="inline-form"><input id="newCourseName" placeholder="Course name" required><button class="btn btn-primary" type="submit">Add course</button></form><div id="adminCourseList" class="manage-list"></div></article></div>
+          <div class="panel danger-zone"><div><h3>Demo data controls</h3><p class="muted">Resetting removes feedback saved in this browser. This action cannot be undone.</p></div><button class="btn btn-danger" id="clearData">Clear all feedback data</button></div>
+        </section>
+
+        <section class="page" id="page-about">
+          <div class="page-title"><div><span class="eyebrow">ABOUT CAMPUSVOICE</span><h1>Listening is the first step to improving.</h1><p class="muted">A student-centred platform for continuous academic improvement.</p></div></div>
+          <div class="about-hero panel"><div><span class="hero-chip dark-chip">OUR PURPOSE</span><h2>Feedback that creates<br><em>meaningful change.</em></h2><p>CampusVoice is a demonstration Faculty Feedback and Course Evaluation Portal designed to make academic feedback organised, accessible and actionable.</p></div><div class="about-symbol">CV</div></div>
+          <div class="about-cards"><article class="panel"><span class="about-icon purple">◎</span><h3>Our mission</h3><p class="muted">Provide a structured channel through which students can share experiences and contribute to better teaching and learning.</p></article><article class="panel"><span class="about-icon blue">◇</span><h3>Our vision</h3><p class="muted">Encourage a culture of transparency, reflection and continuous improvement in higher education.</p></article><article class="panel"><span class="about-icon green">↗</span><h3>Our approach</h3><p class="muted">Collect structured ratings, thoughtful comments and visual summaries to help identify strengths and improvement opportunities.</p></article></div>
+          <div class="panel objectives"><h3>Key objectives</h3><ul><li>Make faculty feedback easy to submit and review.</li><li>Evaluate teaching quality using consistent rating criteria.</li><li>Understand course-level student experiences.</li><li>Present feedback trends using charts and summaries.</li><li>Support evidence-informed academic improvement.</li></ul></div>
+          <div class="notice"><span>⚑</span><div><strong>Academic project prototype</strong><p>This website is a front-end demonstration built with HTML, CSS and JavaScript. It is not connected to a university server, student information system or secure database.</p></div></div>
+        </section>
+
+        <section class="page" id="page-help">
+          <div class="page-title"><div><span class="eyebrow">WE ARE HERE TO HELP</span><h1>Help & support</h1><p class="muted">Find answers to common questions about using CampusVoice.</p></div></div>
+          <div class="help-layout"><div class="panel faq-panel"><h3>Frequently asked questions</h3>
+            <details open><summary>How do I submit feedback?</summary><p>Open Submit feedback, select a course and faculty member, provide ratings for all criteria, confirm the declaration and submit the form.</p></details>
+            <details><summary>Can I submit anonymous feedback?</summary><p>Yes. Select the anonymous option before submitting. Your name is omitted from the saved record in this browser demonstration.</p></details>
+            <details><summary>Where can I see my previous submissions?</summary><p>Open My feedback to view your saved submissions, ratings and dates.</p></details>
+            <details><summary>How are the graphs calculated?</summary><p>Charts use the average ratings from feedback records saved in the current browser. New submissions update the charts.</p></details>
+            <details><summary>Can I use this portal on another device?</summary><p>This prototype uses localStorage, so records do not automatically sync across devices or browsers.</p></details>
+            <details><summary>Is this connected to a university database?</summary><p>No. A production deployment would require a secure backend, database, authentication, access controls and privacy policies.</p></details>
+          </div><div class="panel contact-panel"><span class="about-icon purple">✉</span><h3>Need further assistance?</h3><p class="muted">For this project demonstration, use the contact form to prepare a support message.</p><form id="helpForm"><div class="field"><label>Your email</label><input type="email" id="helpEmail" required placeholder="you@example.com"></div><div class="field"><label>Topic</label><select id="helpTopic"><option>Portal access</option><option>Submitting feedback</option><option>Technical issue</option><option>Other</option></select></div><div class="field"><label>Message</label><textarea id="helpMessage" rows="4" required placeholder="Describe how we can help..."></textarea></div><button class="btn btn-primary btn-full">Prepare message</button><p id="helpMessageStatus" class="form-message"></p></form></div></div>
+        </section>
+      </div>
+      <footer class="footer"><span>© 2026 CampusVoice · Faculty Feedback & Course Evaluation Portal</span><span>Built for a better learning experience <b>✦</b></span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="detailModal" class="modal hidden"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-close" data-close-modal>×</button><div id="modalContent"></div></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
